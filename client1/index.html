@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>Twitter Application</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+             <a href="#" class="navbar-brand">Real Time Tweets</a>
+        </div>
+
+    </nav>
+    <div class="container">
+        <div id="tweetStream" ></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js" integrity="sha512-WL6WGKMPBiM9PnHRYIn5YEtq0Z8XP4fkVb4qy7PP4vhmYQErJ/dySyXuFIMDf1eEYCXCrQrMJfkNwKc9gsjTjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const myTweet=document.getElementById('tweetStream');
+        const socket=io();
+        socket.on('connect',() => console.log('Server Connected'));
+        socket.on('tweet' ,(tweet) => 
+        {
+           // console.log(tweet);
+            const tweets={
+                id:tweet.data.id,
+                text:tweet.data.text,
+                user : tweet.includes.users[0].username,
+                username:` @ ${tweet.includes.users[0].username}`
+            }
+            const newdiv=document.createElement('div');
+            newdiv.className='card my-4'
+            newdiv.innerHTML=`<div class='card-body'>
+                <h4 class='card-title m-2'>${tweets.text}</h4>
+                <h5 class='card-subtitle mt-1'> ${ tweets.username}</h5>
+                <a class='btn btn-primary mt-3' target="blank" href='https://twitter.com/${tweets.user}/status/${tweets.id}'><i class='fab fa-twitter'></i>Go to tweet</a>
+                </div>`  
+                myTweet.appendChild(newdiv);          
+        })
+    </script>
+</body>
+</html>
