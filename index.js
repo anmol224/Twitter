@@ -5,7 +5,7 @@ const app=express();
 const socketIO=require('socket.io');
 const config=require('dotenv').config();
 const TOKEN=process.env.TWITTER_BEARER_TOKEN;
-const PORT=process.env.PORT || 3000;
+const PORT= 3000 || process.env.PORT;
 const server=http.createServer(app);
 const IO=socketIO(server);
 app.get('/',(req,res) => 
@@ -75,9 +75,10 @@ IO.on('connection' ,async () =>
     console.log('CLient connected');
     let currentRules;
     try {
-        await setRules();
+      
         currentRules=await getRules();
         await deleteRules(currentRules);
+        await setRules();
         
     } catch (error) {
         console.error(error);
