@@ -5,14 +5,14 @@ const app=express();
 const socketIO=require('socket.io');
 const config=require('dotenv').config();
 const TOKEN=process.env.TWITTER_BEARER_TOKEN;
-const PORT=  process.env.PORT || 5000;
+const PORT=  3030;
 const server=http.createServer(app);
 const IO=socketIO(server);
 app.get('/',(req,res) => 
 {
     res.sendFile(path.resolve(__dirname,'./','client1','index.html'));
 })
-const rules=[{value:"covid"}];
+const rules=[{value:"indvspak"}];
 console.log(TOKEN);
 const needle=require('needle');
 const rulesUrl="https://api.twitter.com/2/tweets/search/stream/rules";

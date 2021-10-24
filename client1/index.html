@@ -3,18 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width,initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="./logo.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>Twitter Application</title>
+    <style>
+        .footer
+        {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width:100%;
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+            background-color: #ccc;
+            color: black;
+            padding-top:5px ;
+
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-             <a href="#" class="navbar-brand">Real Time Tweets</a>
+             <a href="#" class="navbar-brand">  <h3>Artificial Intelligence</h3>  </a>  
+             
         </div>
 
     </nav>
     <div class="container">
+     
         <div id="tweetStream" ></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js" integrity="sha512-WL6WGKMPBiM9PnHRYIn5YEtq0Z8XP4fkVb4qy7PP4vhmYQErJ/dySyXuFIMDf1eEYCXCrQrMJfkNwKc9gsjTjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -24,7 +43,7 @@
         socket.on('connect',() => console.log('Server Connected'));
         socket.on('tweet' ,(tweet) => 
         {
-           // console.log(tweet);
+         console.log(tweet);
             const tweets={
                 id:tweet.data.id,
                 text:tweet.data.text,
@@ -41,5 +60,8 @@
                 myTweet.appendChild(newdiv);          
         })
     </script>
+    <div class="footer">
+        <p> &#169; Created By Anmol Jaiswal </p>
+    </div>  
 </body>
 </html>
