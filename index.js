@@ -12,8 +12,8 @@ app.get('/',(req,res) =>
 {
     res.sendFile(path.resolve(__dirname,'./','client1','index.html'));
 })
-const rules=[{value:"indvspak"}];
-console.log(TOKEN);
+const rules=[{value:"zeenews",value:"ndtv"}];
+
 const needle=require('needle');
 const rulesUrl="https://api.twitter.com/2/tweets/search/stream/rules";
 const streamUrl="https://api.twitter.com/2/tweets/search/stream?tweet.fields=public_metrics&expansions=author_id";
@@ -72,7 +72,7 @@ async function deleteRules(rules)
 }
 IO.on('connection' ,async () =>
 {
-    console.log('CLient connected');
+    console.log('Client connected');
     let currentRules;
     try {
       
