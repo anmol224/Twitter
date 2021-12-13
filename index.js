@@ -1,11 +1,13 @@
 const http=require('http');
+const config=require('dotenv').config();
+const PORT= process.env.PORT || 5000;
 const path=require('path');
 const express=require('express');
 const app=express();
 const socketIO=require('socket.io');
-const config=require('dotenv').config();
+
 const TOKEN=process.env.TWITTER_BEARER_TOKEN;
-const PORT= process.env.PORT || 5000;
+
 const server=http.createServer(app);
 const IO=socketIO(server);
 app.get('/',(req,res) => 
