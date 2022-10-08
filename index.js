@@ -14,7 +14,7 @@ app.get('/',(req,res) =>
 {
     res.sendFile(path.resolve(__dirname,'./','client1','index.html'));
 })
-const rules=[{value:"accenture"}];
+const rules=[{value:"@ndtv"}];
 
 const needle=require('needle');
 const rulesUrl="https://api.twitter.com/2/tweets/search/stream/rules";
